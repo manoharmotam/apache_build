@@ -13,3 +13,5 @@ jobs:
 
     - name: build docker image
       run: docker build . --file Dockerfile --tag simpleapp:v1
+    - name: run docker container
+      run: docker run -itd --name simpleapp -p 5000:5000 simpleapp:v1
