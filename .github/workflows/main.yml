@@ -4,14 +4,22 @@ on:
   push:
     branches: [main]
 jobs:
-  build:
+  build_cont:
     runs-on: ubuntu-latest
-
     steps:
     - name: checkout repo
       uses: actions/checkout@v4
-
     - name: build docker image
       run: docker build . --file Dockerfile --tag simpleapp:v1
+  initialize_cont:
+    runs-on: ubuntu-latest
+    steps:
     - name: run docker container
       run: docker run -itd --name simpleapp -p 5000:5000 simpleapp:v1
+    - name: docker ps
+      run: docker ps
+  verify_cont:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Verify app
+      run: curl http://localhost:5000
