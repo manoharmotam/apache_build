@@ -1,1 +1,15 @@
----
+name: simple cicd pipeline
+
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v4
+
+    - name: build docker image
+      run: docker build . --file Dockerfile --tag simpleapp:v1
