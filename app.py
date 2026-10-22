@@ -6,5 +6,9 @@ app = Flask(__name__)
 def home():
     return "<h1>Welcome to my simple Flask app!</h1>"
 
+@app.route('/cart')
+def cart():
+    return "<h1>This is cart page</h1>"
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
